@@ -9,8 +9,8 @@ and open the template in the editor.
 <world
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
     xsi:noNamespaceSchemaLocation='../resources/jaxb/Schema/schema.xml.xsd'>
-    <name></name>
-    <logo></logo>
+    <name>World</name>
+    <logo><img src="webapp/world.png"/></logo>
     <money></money>
     <score></score>
     <totalangels></totalangels>
@@ -32,7 +32,7 @@ and open the template in the editor.
             <palliers>
                 <pallier>
                     <name>Niveau 1</name>
-                    <logo><img src="webapp/foot.png"/></logo>
+                    <logo><img src="webapp/ear.png"/></logo>
                     <seuil>15</seuil>
                     <idcible>01</idcible>
                     <ratio>2</ratio>
@@ -41,7 +41,7 @@ and open the template in the editor.
                 </pallier>
                 <pallier>
                     <name>Niveau 2</name>
-                    <logo><img src="webapp/foot.png"/></logo>
+                    <logo><img src="webapp/ear.png"/></logo>
                     <seuil>40</seuil>
                     <idcible>01</idcible>
                     <ratio>2</ratio>
@@ -53,7 +53,7 @@ and open the template in the editor.
         <product>
             <id>02</id>
             <name>Oeil</name>
-            <logo><img src="webapp/foot.png"/></logo>
+            <logo><img src="webapp/eyes.png"/></logo>
             <cout>10</cout>
             <croissance>1.07</croissance>
             <revenu>7</revenu>
@@ -88,7 +88,7 @@ and open the template in the editor.
     <upgrades>
         <palliers>
         <pallier>
-                    <name>Profit des pieds x3 </name>
+                    <name>Profit des oreilles x3 </name>
                     <logo><img src="webapp/boost.png"/></img></logo>
                     <seuil>150</seuil>
                     <idcible>01</idcible>
