@@ -9,8 +9,13 @@ package com.isis.adventureISIServer.demo;
  *
  * @author cbason
  */
+import generated.PallierType;
+import generated.ProductType;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
+import static javax.ws.rs.HttpMethod.POST;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
@@ -34,5 +39,20 @@ public class Webservice {
     public Response getWorld(@Context HttpServletRequest request) {
         String username = request.getHeader("X-user");
         return Response.ok(services.getWorld(username)).build();
+    }
+    
+    @PUT
+    @Path("product")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public void PutProduct(ProductType product){
+        System.out.println("Put sur le produit:"+product.getName());      
+    }
+    
+    @POST
+    @PUT
+    @Path("manager")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public void PutManager(PallierType manager){
+        System.out.println("Put sur le manager:"+manager.getName());      
     }
 }
