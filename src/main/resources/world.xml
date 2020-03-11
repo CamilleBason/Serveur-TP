@@ -4,7 +4,7 @@
 <world
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../resources/jaxb/Schema/schema.xml.xsd">
-    <name></name>
+    <name>Name world</name>
     <logo></logo>
     <money></money>
     <score></score>

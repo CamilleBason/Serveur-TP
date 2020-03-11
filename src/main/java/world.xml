@@ -9,7 +9,7 @@ and open the template in the editor.
 <world
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
     xsi:noNamespaceSchemaLocation='../resources/jaxb/Schema/schema.xml.xsd'>
-    <name>World</name>
+    <name> </name>
     <logo><img src="webapp/world.png"/></logo>
     <money></money>
     <score></score>
@@ -138,4 +138,3 @@ and open the template in the editor.
 
 </world>
 
-</world>
