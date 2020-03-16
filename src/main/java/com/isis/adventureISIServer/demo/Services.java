@@ -86,7 +86,7 @@ public class Services {
 // sur lequel une action a eu lieu (lancement manuel de production ou 
 // achat d’une certaine quantité de produit)
 // renvoie false si l’action n’a pas pu être traitée  
-    public Boolean updateProduct(String username, ProductType newproduct) {
+/*    public Boolean updateProduct(String username, ProductType newproduct) {
 
         // aller chercher le monde qui correspond au joueur
         World world = getWorld(username);
@@ -112,12 +112,12 @@ public class Services {
     }
 
     private void findProductById(World world, int id) {
-        ProductsType products= world.getProducts();
+        ProductsType ProductType= world.getProducts();
         //for (ProductType p: products) {
           //  p.getId();
           
             ///*
             
         //}
-    }
+    }*/
 }
