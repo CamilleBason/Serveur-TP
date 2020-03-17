@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><world><name>Organe world</name><logo>
+    </logo><money>0.0</money><score>0.0</score><totalangels>0.0</totalangels><activeangels>0.0</activeangels><angelbonus>0</angelbonus><lastupdate>1584460479828</lastupdate><products><product><id>1</id><name>Oreille</name><logo>
+            </logo><cout>4.0</cout><croissance>1.07</croissance><revenu>1.0</revenu><vitesse>0</vitesse><quantite>15</quantite><timeleft>0</timeleft><managerUnlocked>false</managerUnlocked><palliers><pallier><name>Niveau 1</name><logo>
+                    </logo><seuil>15</seuil><idcible>1</idcible><ratio>2.0</ratio><unlocked>false</unlocked></pallier><pallier><name>Niveau 2</name><logo>
+                    </logo><seuil>40</seuil><idcible>1</idcible><ratio>2.0</ratio><unlocked>false</unlocked></pallier></palliers></product><product><id>2</id><name>Oeil</name><logo>
+            </logo><cout>10.0</cout><croissance>1.07</croissance><revenu>7.0</revenu><vitesse>1</vitesse><quantite>15</quantite><timeleft>0</timeleft><managerUnlocked>false</managerUnlocked><palliers><pallier><name>Niveau 1</name><logo>
+                    </logo><seuil>25</seuil><idcible>1</idcible><ratio>3.0</ratio><unlocked>false</unlocked></pallier><pallier><name>Niveau 2</name><logo>
+                    </logo><seuil>50</seuil><idcible>1</idcible><ratio>2.0</ratio><unlocked>false</unlocked></pallier></palliers></product></products><allunlocks/><upgrades/><angelupgrades/><managers/></world>

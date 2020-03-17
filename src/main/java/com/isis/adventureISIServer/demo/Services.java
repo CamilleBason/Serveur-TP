@@ -80,14 +80,34 @@ public class Services {
     }
 
     World getWorld(String username) {
+        World world = readWorldFromXml(username);
+        long ecoule = world.getLastupdate() - System.currentTimeMillis();
+        ProductsType ps = world.getProducts();
+        for (ProductType p : ps.getProduct()) {
+            if (p.getTimeleft() > 0) {
+                if (p.getTimeleft() < p.getVitesse()) {
+                    if (p.isManagerUnlocked()) {
+                        int nb = (int) (ecoule / p.getVitesse());
+                        world.setMoney(world.getMoney() + nb * p.getRevenu());
+                    } else {
+                        world.setMoney(world.getMoney() + p.getRevenu());
+                    }
+                } else {
+                    p.setTimeleft(p.getTimeleft() - ecoule);
+                }
+            }
+            world.setLastupdate(System.currentTimeMillis());
 
-        return readWorldFromXml(username); //To change body of generated methods, choose Tools | Templates.
+        }
+        saveWorldToXml(username, world);
+        return world;
+
     }
+    // prend en paramètre le pseudo du joueur et le produit
+    // sur lequel une action a eu lieu (lancement manuel de production ou 
+    // achat d’une certaine quantité de produit)
+    // renvoie false si l’action n’a pas pu être traitée  
 
-// prend en paramètre le pseudo du joueur et le produit
-// sur lequel une action a eu lieu (lancement manuel de production ou 
-// achat d’une certaine quantité de produit)
-// renvoie false si l’action n’a pas pu être traitée  
     public Boolean updateProduct(String username, ProductType newproduct) {
 
         // aller chercher le monde qui correspond au joueur
@@ -150,7 +170,7 @@ public class Services {
         // débloquer le manager de ce produit
         product.isManagerUnlocked();
         // soustraire de l'argent du joueur le cout du manager
-        world.setMoney(world.getMoney()-manager.getSeuil());
+        world.setMoney(world.getMoney() - manager.getSeuil());
         // sauvegarder les changements au monde
         saveWorldToXml(username, world);
         return true;
@@ -161,7 +181,7 @@ public class Services {
         PallierType Goodmanager = null;
         for (PallierType p : ms.getPallier()) {
             if (name == p.getName()) {
-                Goodmanager= p;
+                Goodmanager = p;
             }
         }
         return Goodmanager;
