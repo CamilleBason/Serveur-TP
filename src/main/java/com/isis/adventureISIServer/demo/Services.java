@@ -9,6 +9,8 @@ package com.isis.adventureISIServer.demo;
  *
  * @author cbason
  */
+import generated.PallierType;
+import generated.PalliersType;
 import generated.ProductType;
 import generated.ProductsType;
 import javax.servlet.http.HttpServletRequest;
@@ -49,7 +51,7 @@ public class Services {
                 //File f = new File("/world.xml");
                 world = (World) jaxbUnmarshaller.unmarshal(f);
             } catch (Exception e) {
-                System.out.println("Pas de monde pour le joueur:"+username);
+                System.out.println("Pas de monde pour le joueur:" + username);
                 InputStream input = getClass().getClassLoader().getResourceAsStream("world.xml");
                 jaxbContext = JAXBContext.newInstance(World.class);
                 Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
@@ -63,7 +65,7 @@ public class Services {
         return world;
     }
 
-    private void saveWorldToXml(String username,World world) {
+    private void saveWorldToXml(String username, World world) {
         JAXBContext jaxbContext;
 
         try {
@@ -86,7 +88,7 @@ public class Services {
 // sur lequel une action a eu lieu (lancement manuel de production ou 
 // achat d’une certaine quantité de produit)
 // renvoie false si l’action n’a pas pu être traitée  
-/*    public Boolean updateProduct(String username, ProductType newproduct) {
+    public Boolean updateProduct(String username, ProductType newproduct) {
 
         // aller chercher le monde qui correspond au joueur
         World world = getWorld(username);
@@ -100,24 +102,69 @@ public class Services {
         // sinon c’est qu’il s’agit d’un lancement de production.
         int qtchange = newproduct.getQuantite() - product.getQuantite();
         if (qtchange > 0) {
-        // soustraire del'argent du joueur le cout de la quantité
-        // achetée et mettre à jour la quantité de product 
+            // soustraire del'argent du joueur le cout de la quantité
+            // achetée et mettre à jour la quantité de product 
+            double somme = product.getCout() * qtchange;
+            world.setMoney(world.getMoney() - somme);
+            product.setQuantite(product.getQuantite() + qtchange);
         } else {
             // initialiser product.timeleft à product.vitesse
             // pour lancer la production
+            product.setTimeleft(product.getVitesse());
         }
         // sauvegarder les changements du monde
         saveWorldToXml(username, world);
         return true;
     }
 
-    private void findProductById(World world, int id) {
-        ProductsType ProductType= world.getProducts();
-        //for (ProductType p: products) {
-          //  p.getId();
-          
-            ///*
-            
-        //}
-    }*/
+    private ProductType findProductById(World world, int id) {
+        ProductsType ps = world.getProducts();
+        ProductType Goodproduct = null;
+        for (ProductType p : ps.getProduct()) {
+            if (id == p.getId()) {
+                Goodproduct = p;
+            }
+        }
+        return Goodproduct;
+    }
+
+    // prend en paramètre le pseudo du joueur et le manager acheté.
+    // renvoie false si l’action n’a pas pu être traitée
+    public Boolean updateManager(String username, PallierType newmanager) {
+        // aller chercher le monde qui correspond au joueur
+        World world = getWorld(username);
+        // trouver dans ce monde, le manager équivalent à celui passé
+        // en paramètre
+        PallierType manager = findManagerByName(world, newmanager.getName());
+        if (manager == null) {
+            return false;
+        }
+
+        // débloquer ce manager
+        manager.setUnlocked(true);
+        // trouver le produit correspondant au manager
+        ProductType product = findProductById(world, manager.getIdcible());
+        if (product == null) {
+            return false;
+        }
+        // débloquer le manager de ce produit
+        product.isManagerUnlocked();
+        // soustraire de l'argent du joueur le cout du manager
+        world.setMoney(world.getMoney()-manager.getSeuil());
+        // sauvegarder les changements au monde
+        saveWorldToXml(username, world);
+        return true;
+    }
+
+    private PallierType findManagerByName(World world, String name) {
+        PalliersType ms = world.getManagers();
+        PallierType Goodmanager = null;
+        for (PallierType p : ms.getPallier()) {
+            if (name == p.getName()) {
+                Goodmanager= p;
+            }
+        }
+        return Goodmanager;
+    }
+
 }

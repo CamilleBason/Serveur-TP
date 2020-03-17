@@ -40,7 +40,7 @@ public class Webservice {
         String username = request.getHeader("X-user");
         return Response.ok(services.getWorld(username)).build();
     }
-    /*
+    
     @PUT
     @Path("product")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -48,11 +48,11 @@ public class Webservice {
         System.out.println("Put sur le produit:"+product.getName());      
     }
     
-    @POST
+    
     @PUT
     @Path("manager")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public void PutManager(PallierType manager){
         System.out.println("Put sur le manager:"+manager.getName());      
-    }*/
+    }
 }
