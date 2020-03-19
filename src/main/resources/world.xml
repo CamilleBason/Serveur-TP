@@ -103,8 +103,8 @@
                 </logo>
                 <seuil>150</seuil>
                 <idcible>01</idcible>
-                <ratio></ratio>
-                <typeratio></typeratio>
+                <ratio>3</ratio>
+                <typeratio>GAIN</typeratio>
                 <unlocked>false</unlocked>
             </pallier>
 

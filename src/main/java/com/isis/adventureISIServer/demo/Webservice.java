@@ -55,4 +55,11 @@ public class Webservice {
     public void PutManager(PallierType manager){
         System.out.println("Put sur le manager:"+manager.getName());      
     }
+    
+    @PUT
+    @Path("upgrade")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public void PutUpgrade(PallierType upgrade){
+        System.out.println("Put sur le upgrade: "+upgrade.getName());      
+    }
 }
