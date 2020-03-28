@@ -6,7 +6,7 @@
     xsi:noNamespaceSchemaLocation="../resources/jaxb/Schema/schema.xml.xsd">
     <name>Organe world</name>
     <logo>
-        <img src="world.png"/>
+        <img src="http://localhost:8080/world.png"/>
     </logo>
     <money></money>
     <score></score>
@@ -19,7 +19,7 @@
             <id>01</id>
             <name>Oreille</name>
             <logo>
-                <img src="webapp/ear.png"/>
+                <img src="http://localhost:8080/ear.png"/>
             </logo>
             <cout>4</cout>
             <croissance>1.07</croissance>
@@ -32,7 +32,7 @@
                 <pallier>
                     <name>Niveau 1</name>
                     <logo>
-                        <img src="webapp/foot.png"/>
+                        <img src="http://localhost:8080/foot.png"/>
                     </logo>
                     <seuil>15</seuil>
                     <idcible>01</idcible>
@@ -43,7 +43,7 @@
                 <pallier>
                     <name>Niveau 2</name>
                     <logo>
-                        <img src="webapp/foot.png"/>
+                        <img src="http://localhost:8080/foot.png"/>
                     </logo>
                     <seuil>40</seuil>
                     <idcible>01</idcible>
@@ -57,7 +57,7 @@
             <id>02</id>
             <name>Oeil</name>
             <logo>
-                <img src="webapp/foot.png"/>
+                <img src="http://localhost:8080/foot.png"/>
             </logo>
             <cout>10</cout>
             <croissance>1.07</croissance>
@@ -70,7 +70,7 @@
                 <pallier>
                     <name>Niveau 1</name>
                     <logo>
-                        <img src="webapp/eyes.png"/>
+                        <img src="http://localhost:8080/eyes.png"/>
                     </logo>
                     <seuil>25</seuil>
                     <idcible>01</idcible>
@@ -81,7 +81,7 @@
                 <pallier>
                     <name>Niveau 2</name>
                     <logo>
-                        <img src="webapp/eyes.png"/>
+                        <img src="http://localhost:8080/eyes.png"/>
                     </logo>
                     <seuil>50</seuil>
                     <idcible>01</idcible>
@@ -99,7 +99,7 @@
             <pallier>
                 <name>Profit des pieds x3 </name>
                 <logo>
-                    <img src="webapp/boost.png"/>
+                    <img src="http://localhost:8080/boost.png"/>
                 </logo>
                 <seuil>150</seuil>
                 <idcible>01</idcible>
@@ -115,7 +115,7 @@
             <pallier>
                 <name>Angel 1</name>
                 <logo>
-                    <img src="webapp/angel.png"/>
+                    <img src="http://localhost:8080/angel.png"/>
                 </logo>
                 <seuil>20000</seuil>
                 <idcible>0</idcible>
@@ -130,7 +130,7 @@
             <pallier>
                 <name>Toto</name>
                 <logo>
-                    <img src="webapp/toto.png"/>
+                    <img src="http://localhost:8080/toto.png"/>
                 </logo>
                 <seuil>150</seuil>
                 <idcible>01</idcible>
@@ -142,7 +142,7 @@
             <pallier>
                 <name>Cynthia</name>
                 <logo>
-                    <img src="webapp/CYNTHIA.png"/>
+                    <img src="http://localhost:8080/CYNTHIA.png"/>
                 </logo>
                 <seuil>500</seuil>
                 <idcible>02</idcible>
