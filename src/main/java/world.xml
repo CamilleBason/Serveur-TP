@@ -21,7 +21,7 @@ and open the template in the editor.
         <product>
             <id>01</id>
             <name>Oreille</name>
-            <logo><img src="webapp/ear.png"/></logo>
+            <logo>ear.png</logo>
             <cout>4</cout>
             <croissance>1.07</croissance>
             <revenu>1</revenu>
