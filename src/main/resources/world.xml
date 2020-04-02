@@ -8,7 +8,7 @@
     <totalangels>0.0</totalangels>
     <activeangels>0.0</activeangels>
     <angelbonus>0</angelbonus>
-    <lastupdate>1585495985943</lastupdate>
+    <lastupdate>0</lastupdate>
     <products>
         <product>
             <id>1</id>
@@ -17,7 +17,7 @@
             <cout>4.0</cout>
             <croissance>1.07</croissance>
             <revenu>1.0</revenu>
-            <vitesse>0</vitesse>
+            <vitesse>1</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
             <managerUnlocked>false</managerUnlocked>
@@ -47,7 +47,7 @@
             <cout>10.0</cout>
             <croissance>1.07</croissance>
             <revenu>7.0</revenu>
-            <vitesse>1</vitesse>
+            <vitesse>2</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
             <managerUnlocked>false</managerUnlocked>
@@ -77,7 +77,7 @@
             <cout>75.0</cout>
             <croissance>1.07</croissance>
             <revenu>20.0</revenu>
-            <vitesse>20</vitesse>
+            <vitesse>10</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
             <managerUnlocked>false</managerUnlocked>
@@ -107,7 +107,7 @@
             <cout>500.0</cout>
             <croissance>1.07</croissance>
             <revenu>150.0</revenu>
-            <vitesse>3</vitesse>
+            <vitesse>20</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
             <managerUnlocked>false</managerUnlocked>
@@ -137,7 +137,7 @@
             <cout>2000.0</cout>
             <croissance>1.07</croissance>
             <revenu>500.0</revenu>
-            <vitesse>5</vitesse>
+            <vitesse>30</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
             <managerUnlocked>false</managerUnlocked>
@@ -167,7 +167,7 @@
             <cout>10000.0</cout>
             <croissance>1.07</croissance>
             <revenu>2500.0</revenu>
-            <vitesse>30</vitesse>
+            <vitesse>50</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
             <managerUnlocked>false</managerUnlocked>
@@ -194,7 +194,7 @@
     <allunlocks>
     </allunlocks>
     <upgrades>
-        <palliers>
+        
             <pallier>
                 <name>Profit des oreilles x3 </name>
                 <logo>
@@ -207,10 +207,10 @@
                 <unlocked>false</unlocked>
             </pallier>
 
-        </palliers>
+        
     </upgrades>
     <angelupgrades>
-        <palliers>
+        
             <pallier>
                 <name>Angel 1</name>
                 <logo>
@@ -222,10 +222,10 @@
                 <typeratio>ANGE</typeratio>
                 <unlocked>false</unlocked>
             </pallier>      
-        </palliers>
+        
     </angelupgrades>
     <managers>
-        <palliers>
+        
             <pallier>
                 <name>Toto</name>
                 <logo>
@@ -292,6 +292,6 @@
                 <typeratio></typeratio>
                 <unlocked>false</unlocked>
             </pallier>
-        </palliers>
+        
     </managers>
 </world>
