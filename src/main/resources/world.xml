@@ -1,61 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-
-<world >
-    <name>Organe world</name>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<world>
+<name>Organe world</name>
     <logo>world.png
     </logo>
-    <money></money>
-    <score></score>
-    <totalangels></totalangels>
-    <activeangels></activeangels>
-    <angelbonus></angelbonus>
-    <lastupdate></lastupdate>
+    <money>10.0</money>
+    <score>0.0</score>
+    <totalangels>0.0</totalangels>
+    <activeangels>0.0</activeangels>
+    <angelbonus>0</angelbonus>
+    <lastupdate>1585495985943</lastupdate>
     <products>
         <product>
-            <id>01</id>
+            <id>1</id>
             <name>Oreille</name>
             <logo>ear.png</logo>
-            <cout>4</cout>
+            <cout>4.0</cout>
             <croissance>1.07</croissance>
-            <revenu>1</revenu>
-            <vitesse>0.5</vitesse>
+            <revenu>1.0</revenu>
+            <vitesse>0</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
             <managerUnlocked>false</managerUnlocked>
             <palliers>
                 <pallier>
                     <name>Niveau 1</name>
-                    <logo>ear.png
-                    </logo>
+                    <logo>ear.png</logo>
                     <seuil>15</seuil>
-                    <idcible>01</idcible>
-                    <ratio>2</ratio>
-                    <typeratio>GAIN</typeratio>
+                    <idcible>1</idcible>
+                    <ratio>2.0</ratio>
                     <unlocked>false</unlocked>
                 </pallier>
                 <pallier>
                     <name>Niveau 2</name>
-                    <logo>
-                        ear.png
-                    </logo>
+                    <logo>ear.png</logo>
                     <seuil>40</seuil>
-                    <idcible>01</idcible>
-                    <ratio>2</ratio>
-                    <typeratio>GAIN</typeratio>
+                    <idcible>1</idcible>
+                    <ratio>2.0</ratio>
                     <unlocked>false</unlocked>
                 </pallier>
             </palliers>
         </product>
         <product>
-            <id>02</id>
+            <id>2</id>
             <name>Oeil</name>
-            <logo>
-                eyes.png
-            </logo>
-            <cout>10</cout>
+            <logo>eyes.png</logo>
+            <cout>10.0</cout>
             <croissance>1.07</croissance>
-            <revenu>7</revenu>
+            <revenu>7.0</revenu>
             <vitesse>1</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
@@ -63,37 +54,29 @@
             <palliers>
                 <pallier>
                     <name>Niveau 1</name>
-                    <logo>
-                        eyes.png
-                    </logo>
+                    <logo>eyes.png</logo>
                     <seuil>25</seuil>
-                    <idcible>01</idcible>
-                    <ratio>3</ratio>
-                    <typeratio>GAIN</typeratio>
+                    <idcible>1</idcible>
+                    <ratio>3.0</ratio>
                     <unlocked>false</unlocked>
                 </pallier>
                 <pallier>
                     <name>Niveau 2</name>
-                    <logo>
-                        eyes.png
-                    </logo>
+                    <logo>eyes.png</logo>
                     <seuil>50</seuil>
-                    <idcible>01</idcible>
-                    <ratio>2</ratio>
-                    <typeratio>GAIN</typeratio>
+                    <idcible>1</idcible>
+                    <ratio>2.0</ratio>
                     <unlocked>false</unlocked>
                 </pallier>
             </palliers>
         </product>
         <product>
-            <id>03</id>
+            <id>3</id>
             <name>Poumon</name>
-            <logo>
-                lungs.png
-            </logo>
-            <cout>75</cout>
+            <logo>lungs.png</logo>
+            <cout>75.0</cout>
             <croissance>1.07</croissance>
-            <revenu>20</revenu>
+            <revenu>20.0</revenu>
             <vitesse>20</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
@@ -101,37 +84,29 @@
             <palliers>
                 <pallier>
                     <name>Niveau 1</name>
-                    <logo>
-                        lungs.png
-                    </logo>
+                    <logo>lungs.png</logo>
                     <seuil>50</seuil>
-                    <idcible>03</idcible>
-                    <ratio>2</ratio>
-                    <typeratio>GAIN</typeratio>
+                    <idcible>3</idcible>
+                    <ratio>2.0</ratio>
                     <unlocked>false</unlocked>
                 </pallier>
                 <pallier>
                     <name>Niveau 2</name>
-                    <logo>
-                        lungs.png
-                    </logo>
+                    <logo>lungs.png</logo>
                     <seuil>200</seuil>
-                    <idcible>03</idcible>
-                    <ratio>2</ratio>
-                    <typeratio>GAIN</typeratio>
+                    <idcible>3</idcible>
+                    <ratio>2.0</ratio>
                     <unlocked>false</unlocked>
                 </pallier>
             </palliers>
         </product>
         <product>
-            <id>04</id>
+            <id>4</id>
             <name>Foie</name>
-            <logo>
-                liver.png
-            </logo>
-            <cout>500</cout>
+            <logo>liver.png</logo>
+            <cout>500.0</cout>
             <croissance>1.07</croissance>
-            <revenu>150</revenu>
+            <revenu>150.0</revenu>
             <vitesse>3</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
@@ -139,37 +114,29 @@
             <palliers>
                 <pallier>
                     <name>Niveau 1</name>
-                    <logo>
-                        liver.png
-                    </logo>
+                    <logo>liver.png</logo>
                     <seuil>15</seuil>
-                    <idcible>04</idcible>
-                    <ratio>2</ratio>
-                    <typeratio>GAIN</typeratio>
+                    <idcible>4</idcible>
+                    <ratio>2.0</ratio>
                     <unlocked>false</unlocked>
                 </pallier>
                 <pallier>
                     <name>Niveau 2</name>
-                    <logo>
-                        liver.png
-                    </logo>
+                    <logo>liver.png</logo>
                     <seuil>40</seuil>
                     <idcible>0</idcible>
-                    <ratio>2</ratio>
-                    <typeratio>GAIN</typeratio>
+                    <ratio>2.0</ratio>
                     <unlocked>false</unlocked>
                 </pallier>
             </palliers>
         </product>
         <product>
-            <id>05</id>
+            <id>5</id>
             <name>Coeur</name>
-            <logo>
-                heart.png
-            </logo>
-            <cout>2000</cout>
+            <logo>heart.png</logo>
+            <cout>2000.0</cout>
             <croissance>1.07</croissance>
-            <revenu>500</revenu>
+            <revenu>500.0</revenu>
             <vitesse>5</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
@@ -177,37 +144,29 @@
             <palliers>
                 <pallier>
                     <name>Niveau 1</name>
-                    <logo>
-                        heart.png
-                    </logo>
+                    <logo>heart.png</logo>
                     <seuil>15</seuil>
-                    <idcible>05</idcible>
-                    <ratio>2</ratio>
-                    <typeratio>GAIN</typeratio>
+                    <idcible>5</idcible>
+                    <ratio>2.0</ratio>
                     <unlocked>false</unlocked>
                 </pallier>
                 <pallier>
                     <name>Niveau 2</name>
-                    <logo>
-                        heart.png
-                    </logo>
+                    <logo>heart.png</logo>
                     <seuil>40</seuil>
-                    <idcible>05</idcible>
-                    <ratio>2</ratio>
-                    <typeratio>GAIN</typeratio>
+                    <idcible>5</idcible>
+                    <ratio>2.0</ratio>
                     <unlocked>false</unlocked>
                 </pallier>
             </palliers>
         </product>
         <product>
-            <id>06</id>
+            <id>6</id>
             <name>Cerveau</name>
-            <logo>
-                brain.png
-            </logo>
-            <cout>10000</cout>
+            <logo>brain.png</logo>
+            <cout>10000.0</cout>
             <croissance>1.07</croissance>
-            <revenu>2500</revenu>
+            <revenu>2500.0</revenu>
             <vitesse>30</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
@@ -215,23 +174,18 @@
             <palliers>
                 <pallier>
                     <name>Niveau 1</name>
-                    <logo>brain.png
-                    </logo>
+                    <logo>brain.png</logo>
                     <seuil>15</seuil>
-                    <idcible>06</idcible>
-                    <ratio>2</ratio>
-                    <typeratio>GAIN</typeratio>
+                    <idcible>6</idcible>
+                    <ratio>2.0</ratio>
                     <unlocked>false</unlocked>
                 </pallier>
                 <pallier>
                     <name>Niveau 2</name>
-                    <logo>
-                        brain.png
-                    </logo>
+                    <logo>brain.png</logo>
                     <seuil>40</seuil>
-                    <idcible>06</idcible>
-                    <ratio>2</ratio>
-                    <typeratio>GAIN</typeratio>
+                    <idcible>6</idcible>
+                    <ratio>2.0</ratio>
                     <unlocked>false</unlocked>
                 </pallier>
             </palliers>
@@ -247,7 +201,7 @@
                     ears.png
                 </logo>
                 <seuil>150</seuil>
-                <idcible>01</idcible>
+                <idcible>1</idcible>
                 <ratio>3</ratio>
                 <typeratio>GAIN</typeratio>
                 <unlocked>false</unlocked>
@@ -275,22 +229,65 @@
             <pallier>
                 <name>Toto</name>
                 <logo>
-                    toto.png
+                    man.png
                 </logo>
                 <seuil>150</seuil>
-                <idcible>01</idcible>
+                <idcible>1</idcible>
                 <ratio></ratio>
                 <typeratio></typeratio>
                 <unlocked>false</unlocked>
             </pallier>
-        
             <pallier>
                 <name>Cynthia</name>
                 <logo>
-                    CYNTHIA.png
+                    woman(1).png
                 </logo>
                 <seuil>500</seuil>
-                <idcible>02</idcible>
+                <idcible>2</idcible>
+                <ratio></ratio>
+                <typeratio></typeratio>
+                <unlocked>false</unlocked>
+            </pallier>
+			<pallier>
+                <name>Rodrigo</name>
+                <logo>
+                    man(2).png
+                </logo>
+                <seuil>1000</seuil>
+                <idcible>3</idcible>
+                <ratio></ratio>
+                <typeratio></typeratio>
+                <unlocked>false</unlocked>
+            </pallier>
+			<pallier>
+                <name>Carlita</name>
+                <logo>
+                    girl.png
+                </logo>
+                <seuil>2000</seuil>
+                <idcible>4</idcible>
+                <ratio></ratio>
+                <typeratio></typeratio>
+                <unlocked>false</unlocked>
+            </pallier>
+			<pallier>
+                <name>Jean-Pierre</name>
+                <logo>
+                    man(1).png
+                </logo>
+                <seuil>5000</seuil>
+                <idcible>5</idcible>
+                <ratio></ratio>
+                <typeratio></typeratio>
+                <unlocked>false</unlocked>
+            </pallier>
+			<pallier>
+                <name>Lou</name>
+                <logo>
+                    woman.png
+                </logo>
+                <seuil>10000</seuil>
+                <idcible>6</idcible>
                 <ratio></ratio>
                 <typeratio></typeratio>
                 <unlocked>false</unlocked>
