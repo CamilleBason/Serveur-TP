@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <world>
 <name>Organe world</name>
-    <logo>world.png
-    </logo>
+    <logo>world.png</logo>
     <money>10.0</money>
     <score>0.0</score>
     <totalangels>0.0</totalangels>
@@ -197,9 +196,7 @@
         
             <pallier>
                 <name>Profit des oreilles x3 </name>
-                <logo>
-                    ears.png
-                </logo>
+                <logo>ears.png</logo>
                 <seuil>150</seuil>
                 <idcible>1</idcible>
                 <ratio>3</ratio>
@@ -213,9 +210,7 @@
         
             <pallier>
                 <name>Angel 1</name>
-                <logo>
-                    angel.png
-                </logo>
+                <logo>angel.png</logo>
                 <seuil>20000</seuil>
                 <idcible>0</idcible>
                 <ratio>2</ratio>
@@ -228,9 +223,7 @@
         
             <pallier>
                 <name>Toto</name>
-                <logo>
-                    man.png
-                </logo>
+                <logo>man.png</logo>
                 <seuil>150</seuil>
                 <idcible>1</idcible>
                 <ratio></ratio>
@@ -239,9 +232,7 @@
             </pallier>
             <pallier>
                 <name>Cynthia</name>
-                <logo>
-                    woman(1).png
-                </logo>
+                <logo>woman1.png</logo>
                 <seuil>500</seuil>
                 <idcible>2</idcible>
                 <ratio></ratio>
@@ -250,9 +241,7 @@
             </pallier>
 			<pallier>
                 <name>Rodrigo</name>
-                <logo>
-                    man(2).png
-                </logo>
+                <logo>man2.png</logo>
                 <seuil>1000</seuil>
                 <idcible>3</idcible>
                 <ratio></ratio>
@@ -261,9 +250,7 @@
             </pallier>
 			<pallier>
                 <name>Carlita</name>
-                <logo>
-                    girl.png
-                </logo>
+                <logo>girl.png</logo>
                 <seuil>2000</seuil>
                 <idcible>4</idcible>
                 <ratio></ratio>
@@ -272,9 +259,7 @@
             </pallier>
 			<pallier>
                 <name>Jean-Pierre</name>
-                <logo>
-                    man(1).png
-                </logo>
+                <logo>man1.png</logo>
                 <seuil>5000</seuil>
                 <idcible>5</idcible>
                 <ratio></ratio>
@@ -283,9 +268,7 @@
             </pallier>
 			<pallier>
                 <name>Lou</name>
-                <logo>
-                    woman.png
-                </logo>
+                <logo>woman.png</logo>
                 <seuil>10000</seuil>
                 <idcible>6</idcible>
                 <ratio></ratio>
