@@ -193,11 +193,11 @@
     <allunlocks>
         <pallier>
                 <name>Profit des oreilles x3 </name>
-                <logo>ears.png</logo>
+                <logo>ear.png</logo>
                 <seuil>50</seuil>
                 <idcible>1</idcible>
                 <ratio>3</ratio>
-                <typeratio>GAIN</typeratio>
+                <typeratio>gain</typeratio>
                 <unlocked>false</unlocked>
             </pallier>
             <pallier>
@@ -206,7 +206,7 @@
                 <seuil>60</seuil>
                 <idcible>2</idcible>
                 <ratio>2</ratio>
-                <typeratio>GAIN</typeratio>
+                <typeratio>gain</typeratio>
                 <unlocked>false</unlocked>
             </pallier>
             <pallier>
@@ -215,16 +215,16 @@
                 <seuil>75</seuil>
                 <idcible>3</idcible>
                 <ratio>2</ratio>
-                <typeratio>VITESSE</typeratio>
+                <typeratio>vitesse</typeratio>
                 <unlocked>false</unlocked>
             </pallier>
             <pallier>
-                <name>Profit du foi x2 </name>
+                <name>Profit du foie x2 </name>
                 <logo>liver.png</logo>
                 <seuil>100</seuil>
                 <idcible>4</idcible>
                 <ratio>2</ratio>
-                <typeratio>GAIN</typeratio>
+                <typeratio>gain</typeratio>
                 <unlocked>false</unlocked>
             </pallier>
             <pallier>
@@ -233,7 +233,7 @@
                 <seuil>100</seuil>
                 <idcible>5</idcible>
                 <ratio>2</ratio>
-                <typeratio>VITESSE</typeratio>
+                <typeratio>vitesse</typeratio>
                 <unlocked>false</unlocked>
             </pallier>
             <pallier>
@@ -242,18 +242,18 @@
                 <seuil>100</seuil>
                 <idcible>6</idcible>
                 <ratio>3</ratio>
-                <typeratio>ANGE</typeratio>
+                <typeratio>ange</typeratio>
                 <unlocked>false</unlocked>
             </pallier>
     </allunlocks>
     <upgrades>
             <pallier>
                 <name>Profit des oreilles x2 </name>
-                <logo>ears.png</logo>
+                <logo>ear.png</logo>
                 <seuil>150</seuil>
                 <idcible>1</idcible>
                 <ratio>2</ratio>
-                <typeratio>GAIN</typeratio>
+                <typeratio>gain</typeratio>
                 <unlocked>false</unlocked>
             </pallier>
             <pallier>
@@ -262,7 +262,7 @@
                 <seuil>500</seuil>
                 <idcible>2</idcible>
                 <ratio>2</ratio>
-                <typeratio>VITESSE</typeratio>
+                <typeratio>vitesse</typeratio>
                 <unlocked>false</unlocked>
             </pallier>
             <pallier>
@@ -271,7 +271,7 @@
                 <seuil>1000</seuil>
                 <idcible>3</idcible>
                 <ratio>3</ratio>
-                <typeratio>GAIN</typeratio>
+                <typeratio>gain</typeratio>
                 <unlocked>false</unlocked>
             </pallier>
             <pallier>
@@ -280,7 +280,7 @@
                 <seuil>5000</seuil>
                 <idcible>4</idcible>
                 <ratio>4</ratio>
-                <typeratio>GAIN</typeratio>
+                <typeratio>gain</typeratio>
                 <unlocked>false</unlocked>
             </pallier>
             <pallier>
@@ -289,28 +289,28 @@
                 <seuil>10000</seuil>
                 <idcible>5</idcible>
                 <ratio>2</ratio>
-                <typeratio>VITESSE</typeratio>
+                <typeratio>vitesse</typeratio>
                 <unlocked>false</unlocked>
             </pallier>
             <pallier>
                 <name>Cerveau 2x plus rapide </name>
                 <logo>brain.png</logo>
-                <seuil>100</seuil>
+                <seuil>20000</seuil>
                 <idcible>6</idcible>
                 <ratio>2</ratio>
-                <typeratio>VITESSE</typeratio>
+                <typeratio>vitesse</typeratio>
                 <unlocked>false</unlocked>
             </pallier>
     </upgrades>
     <angelupgrades>
-        
+
             <pallier>
                 <name>Angel 1</name>
                 <logo>angel.png</logo>
                 <seuil>20000</seuil>
                 <idcible>0</idcible>
                 <ratio>2</ratio>
-                <typeratio>ANGE</typeratio>
+                <typeratio>ange</typeratio>
                 <unlocked>false</unlocked>
             </pallier>      
         
