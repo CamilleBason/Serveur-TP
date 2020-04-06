@@ -16,7 +16,7 @@
             <cout>4.0</cout>
             <croissance>1.07</croissance>
             <revenu>1.0</revenu>
-            <vitesse>1</vitesse>
+            <vitesse>1000</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
             <managerUnlocked>false</managerUnlocked>
@@ -46,7 +46,7 @@
             <cout>10.0</cout>
             <croissance>1.07</croissance>
             <revenu>7.0</revenu>
-            <vitesse>2</vitesse>
+            <vitesse>2000</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
             <managerUnlocked>false</managerUnlocked>
@@ -76,7 +76,7 @@
             <cout>75.0</cout>
             <croissance>1.07</croissance>
             <revenu>20.0</revenu>
-            <vitesse>10</vitesse>
+            <vitesse>10000</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
             <managerUnlocked>false</managerUnlocked>
@@ -106,7 +106,7 @@
             <cout>500.0</cout>
             <croissance>1.07</croissance>
             <revenu>150.0</revenu>
-            <vitesse>20</vitesse>
+            <vitesse>20000</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
             <managerUnlocked>false</managerUnlocked>
@@ -136,7 +136,7 @@
             <cout>2000.0</cout>
             <croissance>1.07</croissance>
             <revenu>500.0</revenu>
-            <vitesse>30</vitesse>
+            <vitesse>30000</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
             <managerUnlocked>false</managerUnlocked>
@@ -166,7 +166,7 @@
             <cout>10000.0</cout>
             <croissance>1.07</croissance>
             <revenu>2500.0</revenu>
-            <vitesse>50</vitesse>
+            <vitesse>50000</vitesse>
             <quantite>0</quantite>
             <timeleft>0</timeleft>
             <managerUnlocked>false</managerUnlocked>
@@ -275,7 +275,7 @@
                 <unlocked>false</unlocked>
             </pallier>
             <pallier>
-                <name>Profit du foi x4 </name>
+                <name>Profit du foie x4 </name>
                 <logo>liver.png</logo>
                 <seuil>5000</seuil>
                 <idcible>4</idcible>
