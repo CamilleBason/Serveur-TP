@@ -46,15 +46,19 @@ public class Webservice {
     @PUT
     @Path("product")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void PutProduct(ProductType product){
-        System.out.println("Put sur le produit:"+product.getName());      
+    public void PutProduct(@Context HttpServletRequest request, ProductType product){
+        String username = request.getHeader("X-User");
+        services.updateProduct(username, product);
+        System.out.println("Put sur le produit:" +product.getName());      
     }
     
     
     @PUT
     @Path("manager")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void PutManager(PallierType manager){
+    public void PutManager(@Context HttpServletRequest request, PallierType manager){
+        String username = request.getHeader("X-User");
+        services.updateManager(username, manager);
         System.out.println("Put sur le manager:"+manager.getName());      
     }
     

@@ -128,6 +128,7 @@ public class Services {
     // renvoie false si l’action n’a pas pu être traitée  
 
     public Boolean updateProduct(String username, ProductType newproduct) {
+        System.out.println("Strat update product" + newproduct.getName());      
 
         // aller chercher le monde qui correspond au joueur
         World world = getWorld(username);
@@ -211,6 +212,8 @@ public class Services {
     // renvoie false si l’action n’a pas pu être traitée
     public Boolean updateManager(String username, PallierType newmanager) {
         // aller chercher le monde qui correspond au joueur
+        System.out.println("Strat update manager" + newmanager.getName());      
+
         World world = getWorld(username);
         // trouver dans ce monde, le manager équivalent à celui passé
         // en paramètre
