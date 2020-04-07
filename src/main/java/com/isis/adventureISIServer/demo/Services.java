@@ -44,7 +44,7 @@ public class Services {
 
     }
 
-    private World readWorldFromXml(String username) {
+    World readWorldFromXml(String username) {
         JAXBContext jaxbContext;
 
         try {
