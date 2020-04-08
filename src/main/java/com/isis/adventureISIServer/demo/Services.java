@@ -87,52 +87,60 @@ public class Services {
     }
     
 
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public World getWorld(String username) {
         //recuperer le world
         World wo = this.readWorldFromXml(username);
         //calculer le temps ecoulé depuis la dernière mise a jour du monde
         long ecoule = System.currentTimeMillis() - wo.getLastupdate();
+        System.out.println("ecoule " + ecoule);      
         //pour tous les produits
         ProductsType ps = wo.getProducts();
         for (ProductType p : ps.getProduct()) {
-            //verifier que le joueur possède le produit
-            if (p.getTimeleft() > 0) {
-                //verifier que le temps restant pour l'achat du produit c'est entièrement écoulé
-                if (p.getTimeleft() < ecoule) {
-                    //cas avec un manager
-                    if (p.isManagerUnlocked()) {
-                        //compte le nombe de produits total et met a jour le total
-                        int nb = (int)(ecoule / p.getVitesse());
-                        wo.setMoney(wo.getMoney() + nb * p.getRevenu());
-                        //mise a jour du timeleft
-                        p.setTimeleft(ecoule % p.getVitesse());
-                    //cas sans manager    
-                    } else {
-                        //on ajoute au total un seul produit
-                        wo.setMoney(wo.getMoney() + p.getRevenu());
-                        p.setTimeleft(p.getTimeleft() - p.getVitesse());
+            //si pas de manager
+            if (!p.isManagerUnlocked()) {
+                //verifier que le joueur possède le produit
+                if (p.getTimeleft() > 0) {
+                    if (p.getTimeleft() > ecoule) {
+                        p.setTimeleft(p.getTimeleft() - ecoule);  
                     }
-                //mise a jour du timeleft si il n'est pas atteint
-                } else {
-                    p.setTimeleft(p.getTimeleft() - ecoule);
+                    else{
+                     System.out.println("ok");      
+                        wo.setMoney(wo.getMoney() + p.getRevenu()* p.getQuantite());
+                        p.setTimeleft(0);
+                    }
                 }
             }
-            wo.setLastupdate(System.currentTimeMillis());
-        }
+            //si manager
+            else{
+                if (p.getTimeleft() > 0) {
+                    if (p.getTimeleft() > ecoule) {
+                        p.setTimeleft(p.getTimeleft() - ecoule);  
+                    }
+                    else{
+                        int nb = (int)((ecoule-p.getTimeleft()) / p.getVitesse());
+                        int rest = (int) ((ecoule-p.getTimeleft()) % p.getVitesse());
+                        wo.setMoney(wo.getMoney() + p.getRevenu()* p.getQuantite()*nb);
+                        p.setTimeleft(rest);
+                    }
+                }
+                
+            }                
+            }
+        wo.setLastupdate(System.currentTimeMillis());
         //enregistre les modifications
         saveWorldToXml(username, wo);
+        System.out.println("Monnaie " + wo.getMoney());      
         return this.readWorldFromXml(username);
 
     }
+    
     // prend en paramètre le pseudo du joueur et le produit
     // sur lequel une action a eu lieu (lancement manuel de production ou 
     // achat d’une certaine quantité de produit)
     // renvoie false si l’action n’a pas pu être traitée  
 
-    public Boolean updateProduct(String username, ProductType newproduct) {
+    public Boolean updateProduct(String username, ProductType newproduct) throws FileNotFoundException, FileNotFoundException {
         System.out.println("Strat update product " + newproduct.getName());      
-
         // aller chercher le monde qui correspond au joueur
         World world = getWorld(username);
         // trouver dans ce monde, le produit équivalent à celui passé en paramètr
@@ -149,11 +157,13 @@ public class Services {
         if (qtchange > 0) {
             // soustraire del'argent du joueur le cout de la quantité
             // achetée et mettre à jour la quantité de product 
-            double somme = product.getCout() * qtchange;
+            double somme = ((newproduct.getCout() * qtchange) /product.getCroissance());
             world.setMoney(world.getMoney() - somme);
             System.out.println("Nouvelle money " + world.getMoney());   
             product.setQuantite(product.getQuantite() + qtchange);
-            System.out.println("Nouvelle quantité " + product.getQuantite());   
+            product.setCout(newproduct.getCout());
+            System.out.println("Nouvelle quantité " + product.getQuantite());
+            System.out.println("Nouveaux couts " + product.getCout());   
             //verification des unlocks du produit
             PalliersType pallier = product.getPalliers();
             for (PallierType p : pallier.getPallier()) {

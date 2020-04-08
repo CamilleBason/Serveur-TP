@@ -11,6 +11,7 @@ package com.isis.adventureISIServer.demo;
  */
 import generated.PallierType;
 import generated.ProductType;
+import java.io.FileNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import static javax.ws.rs.HttpMethod.POST;
@@ -46,7 +47,7 @@ public class Webservice {
     @PUT
     @Path("product")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void PutProduct(@Context HttpServletRequest request, ProductType product){
+    public void PutProduct(@Context HttpServletRequest request, ProductType product) throws FileNotFoundException{
         String username = request.getHeader("X-User");
         services.updateProduct(username, product);
         System.out.println("Put sur le produit: " +product.getName());      
