@@ -49,7 +49,7 @@ public class Webservice {
     public void PutProduct(@Context HttpServletRequest request, ProductType product){
         String username = request.getHeader("X-User");
         services.updateProduct(username, product);
-        System.out.println("Put sur le produit:" +product.getName());      
+        System.out.println("Put sur le produit: " +product.getName());      
     }
     
     
