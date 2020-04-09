@@ -14,6 +14,7 @@ import generated.PalliersType;
 import generated.ProductType;
 import generated.ProductsType;
 import generated.TyperatioType;
+import static generated.TyperatioType.ANGE;
 import static generated.TyperatioType.GAIN;
 import static generated.TyperatioType.VITESSE;
 import javax.servlet.http.HttpServletRequest;
@@ -85,14 +86,13 @@ public class Services {
             ex.printStackTrace();
         }
     }
-    
 
     public World getWorld(String username) {
         //recuperer le world
         World wo = this.readWorldFromXml(username);
         //calculer le temps ecoulé depuis la dernière mise a jour du monde
         long ecoule = System.currentTimeMillis() - wo.getLastupdate();
-        System.out.println("ecoule " + ecoule);      
+        System.out.println("ecoule " + ecoule);
         //pour tous les produits
         ProductsType ps = wo.getProducts();
         for (ProductType p : ps.getProduct()) {
@@ -101,92 +101,136 @@ public class Services {
                 //verifier que le joueur possède le produit
                 if (p.getTimeleft() > 0) {
                     if (p.getTimeleft() > ecoule) {
-                        p.setTimeleft(p.getTimeleft() - ecoule);  
-                    }
-                    else{
-                     System.out.println("ok");      
-                        wo.setMoney(wo.getMoney() + p.getRevenu()* p.getQuantite());
+                        p.setTimeleft(p.getTimeleft() - ecoule);
+                    } else {
+                        System.out.println("ok");
+                        wo.setMoney(wo.getMoney() + p.getRevenu() * p.getQuantite());
                         p.setTimeleft(0);
                     }
                 }
-            }
-            //si manager
-            else{
+            } //si manager
+            else {
                 if (p.getTimeleft() > 0) {
                     if (p.getTimeleft() > ecoule) {
-                        p.setTimeleft(p.getTimeleft() - ecoule);  
-                    }
-                    else{
-                        int nb = (int)((ecoule-p.getTimeleft()) / p.getVitesse());
-                        int rest = (int) ((ecoule-p.getTimeleft()) % p.getVitesse());
-                        wo.setMoney(wo.getMoney() + p.getRevenu()* p.getQuantite()*nb);
+                        p.setTimeleft(p.getTimeleft() - ecoule);
+                    } else {
+                        int nb = (int) ((ecoule - p.getTimeleft()) / p.getVitesse());
+                        int rest = (int) ((ecoule - p.getTimeleft()) % p.getVitesse());
+                        wo.setMoney(wo.getMoney() + p.getRevenu() * p.getQuantite() * nb);
                         p.setTimeleft(rest);
                     }
                 }
-                
-            }                
+
             }
+        }
         wo.setLastupdate(System.currentTimeMillis());
         //enregistre les modifications
         saveWorldToXml(username, wo);
-        System.out.println("Monnaie " + wo.getMoney());      
+        System.out.println("Monnaie " + wo.getMoney());
         return this.readWorldFromXml(username);
 
     }
-    
+
     // prend en paramètre le pseudo du joueur et le produit
     // sur lequel une action a eu lieu (lancement manuel de production ou 
     // achat d’une certaine quantité de produit)
     // renvoie false si l’action n’a pas pu être traitée  
-
     public Boolean updateProduct(String username, ProductType newproduct) throws FileNotFoundException, FileNotFoundException {
-        System.out.println("Strat update product " + newproduct.getName());      
+        System.out.println("Strat update product " + newproduct.getName());
         // aller chercher le monde qui correspond au joueur
         World world = getWorld(username);
         // trouver dans ce monde, le produit équivalent à celui passé en paramètr
         ProductType product = findProductById(world, newproduct.getId());
         if (product == null) {
-            System.out.println("product null");   
+            System.out.println("product null");
             return false;
         }
         // calculer la variation de quantité. Si elle est positive c'est
         // que le joueur a acheté une certaine quantité de ce produit
         // sinon c’est qu’il s’agit d’un lancement de production.
         int qtchange = newproduct.getQuantite() - product.getQuantite();
-        System.out.println("variation de quantité " + qtchange);   
+        System.out.println("variation de quantité " + qtchange);
         if (qtchange > 0) {
             // soustraire del'argent du joueur le cout de la quantité
             // achetée et mettre à jour la quantité de product 
-            double somme = ((newproduct.getCout() * qtchange) /product.getCroissance());
+            double somme = ((newproduct.getCout() * qtchange) / product.getCroissance());
             world.setMoney(world.getMoney() - somme);
-            System.out.println("Nouvelle money " + world.getMoney());   
+            System.out.println("Nouvelle money " + world.getMoney());
             product.setQuantite(product.getQuantite() + qtchange);
             product.setCout(newproduct.getCout());
             System.out.println("Nouvelle quantité " + product.getQuantite());
-            System.out.println("Nouveaux couts " + product.getCout());   
+            System.out.println("Nouveaux couts " + product.getCout());
             //verification des unlocks du produit
             PalliersType pallier = product.getPalliers();
             for (PallierType p : pallier.getPallier()) {
                 //cas de l'upgrade d'un seul produit
                 if (p.isUnlocked() == false & p.getIdcible() != 0 & product.getQuantite() >= p.getSeuil()) {
-                    p.isUnlocked();
-                    System.out.println("unlock activé"); 
+                    p.setUnlocked(true);
+                    System.out.println("unlock produit activé");
                     //gain
                     if (p.getTyperatio() == GAIN) {
                         product.setRevenu(product.getRevenu() * p.getRatio());
-                        System.out.println("gain"); 
+                        System.out.println("gain");
                     }
                     //vitesse
                     if (p.getTyperatio() == VITESSE) {
-                        product.setVitesse((int) (product.getVitesse() * p.getRatio()));
+                        product.setVitesse((int) (product.getVitesse() / p.getRatio()));
                         product.setTimeleft((long) (product.getTimeleft() / p.getRatio()));
-                        System.out.println("vitesse"); 
+                        System.out.println("vitesse");
                     }
                 }
                 //cas de l'upgrade de tous les produits
                 if (p.isUnlocked() == false & p.getIdcible() == 0 & product.getQuantite() >= p.getSeuil()) {
-                    p.isUnlocked();
-                    System.out.println("unlock général activé"); 
+                    p.setUnlocked(true);
+                    System.out.println("unlock produit général activé");
+
+                    //gain
+                    if (p.getTyperatio() == GAIN) {
+                        ProductsType ps = world.getProducts();
+                        for (ProductType pro : ps.getProduct()) {
+                            pro.setRevenu(pro.getRevenu() * p.getRatio());
+                        }
+                        System.out.println("general gain");
+                    }
+                    //vitesse
+                    if (p.getTyperatio() == VITESSE) {
+                        ProductsType ps = world.getProducts();
+                        for (ProductType pro : ps.getProduct()) {
+                            pro.setVitesse((int) (pro.getVitesse() / p.getRatio()));
+                            pro.setTimeleft((long) (pro.getTimeleft() / p.getRatio()));
+                        }
+                        System.out.println("general vitesse");
+
+                    }
+                }
+            }
+            PalliersType palliers;
+            palliers = world.getAllunlocks();
+            for (PallierType p : palliers.getPallier()) {
+                //cas de l'upgrade d'un seul produit
+                if (p.getIdcible() == product.getId() & p.getSeuil() <= product.getQuantite()) {
+                    p.setUnlocked(true);
+                    System.out.println("unlock activé");
+                    //gain
+                    if (p.getTyperatio() == GAIN) {
+                        product.setRevenu(product.getRevenu() * p.getRatio());
+                        System.out.println("gain");
+                    }
+                    //vitesse
+                    if (p.getTyperatio() == VITESSE) {
+                        product.setVitesse((int) (product.getVitesse() / p.getRatio()));
+                        product.setTimeleft((long) (product.getTimeleft() / p.getRatio()));
+                        System.out.println("vitesse");
+                    }
+                    if (p.getTyperatio() == ANGE) {
+                        world.setAngelbonus((int) (world.getAngelbonus() + p.getRatio()));
+                        System.out.println("ange");
+                    }
+                }
+                //cas de l'upgrade de tous les produits
+                if (p.getIdcible() == 0 & p.getSeuil() >= product.getQuantite()) {
+                    p.setUnlocked(true);
+                    System.out.println("unlock général activé");
 
                     //gain
                     if (p.getTyperatio() == GAIN) {
@@ -232,18 +276,17 @@ public class Services {
         return Goodproduct;
     }
 
-
     // prend en paramètre le pseudo du joueur et le manager acheté.
     // renvoie false si l’action n’a pas pu être traitée
     public Boolean updateManager(String username, PallierType newmanager) {
         // aller chercher le monde qui correspond au joueur
-        System.out.println("Strat update manager" + newmanager.getName()+ " avec username " + username );      
+        System.out.println("Strat update manager" + newmanager.getName() + " avec username " + username);
         World world = getWorld(username);
         // trouver dans ce monde, le manager équivalent à celui passé
         // en paramètre
         PallierType manager = findManagerByName(world, newmanager.getName());
         if (manager == null) {
-            System.out.println("manager null");     
+            System.out.println("manager null");
             return false;
         }
         // débloquer ce manager
@@ -251,15 +294,15 @@ public class Services {
         // trouver le produit correspondant au manager
         ProductType product = findProductById(world, manager.getIdcible());
         if (product == null) {
-            System.out.println("product null"); 
+            System.out.println("product null");
             return false;
         }
         // débloquer le manager de ce produit
         product.setManagerUnlocked(true);
         // soustraire de l'argent du joueur le cout du manager
-        System.out.println("argent avant soustraction"+ world.getMoney()); 
+        System.out.println("argent avant soustraction" + world.getMoney());
         world.setMoney(world.getMoney() - manager.getSeuil());
-        System.out.println("argent après soustraction"+ world.getMoney());
+        System.out.println("argent après soustraction" + world.getMoney());
         // sauvegarder les changements au monde
         saveWorldToXml(username, world);
         return true;
@@ -277,13 +320,13 @@ public class Services {
         return Goodmanager;
     }
 
-    
     public Boolean updateUpgrade(String username, PallierType newupgrade) {
         // aller chercher le monde qui correspond au joueur
         World world = getWorld(username);
         // trouver dans ce monde, l'upgrade équivalent à celui passé
         // en paramètre
         PallierType upgrade = findUpgradeByName(world, newupgrade.getName());
+        System.out.println("new upgrade " + upgrade.getName());
         if (upgrade == null) {
             return false;
         }
@@ -330,16 +373,17 @@ public class Services {
         saveWorldToXml(username, world);
         return true;
     }
+
     //trouve un upgrade a partir de son nom
     private PallierType findUpgradeByName(World world, String name) {
-        PalliersType up = world.getManagers();
+        PalliersType up = world.getUpgrades();
         PallierType Goodup = null;
         for (PallierType p : up.getPallier()) {
-            if (name == p.getName()) {
-                Goodup = p;
+            if (p.getName().equals(name)) {
+                    Goodup = p;
+                }
             }
+            return Goodup;
         }
-        return Goodup;
-    }
 
-}
+    }

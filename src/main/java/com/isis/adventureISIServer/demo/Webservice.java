@@ -66,7 +66,9 @@ public class Webservice {
     @PUT
     @Path("upgrade")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void PutUpgrade(PallierType upgrade){
+    public void PutUpgrade(@Context HttpServletRequest request, PallierType upgrade){
+        String username = request.getHeader("X-User");
+        services.updateUpgrade(username, upgrade);
         System.out.println("Put sur le upgrade: "+upgrade.getName());      
     }
 }
