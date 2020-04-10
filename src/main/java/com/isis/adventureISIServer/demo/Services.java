@@ -75,7 +75,6 @@ public class Services {
 
     private void saveWorldToXml(String username, World world) {
         JAXBContext jaxbContext;
-
         try {
             OutputStream output = new FileOutputStream(username + "-world.xml");
             jaxbContext = JAXBContext.newInstance(World.class);
@@ -90,7 +89,7 @@ public class Services {
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public World getWorld(String username) throws JAXBException, FileNotFoundException {
         //recuperer le world
-        World wo = this.readWorldFromXml(username);
+        World wo = readWorldFromXml(username);
         if (wo.getLastupdate() == System.currentTimeMillis()) {
             return wo;
         }
@@ -119,21 +118,18 @@ public class Services {
                 }
             } //si manager
             else {
-                if (p.getTimeleft() > 0) {
                     if (p.getTimeleft() > ecoule) {
                         p.setTimeleft(p.getTimeleft() - ecoule);
                     } else {
-                        int nb = (int) ((ecoule - p.getTimeleft()) / p.getVitesse());
+                        int nb = (int) (ecoule  / p.getVitesse());
                         //int nb = (int) (ecoule  / p.getVitesse());
-                        int rest = (int) ((ecoule - p.getTimeleft()) % p.getVitesse());
+                        int rest = (int) (ecoule % p.getVitesse());
                         //int rest = (int) (ecoule  % p.getVitesse());
-                        double money = (wo.getMoney() + p.getRevenu() * p.getQuantite()) * nb;
+                        double money =  (p.getRevenu() * p.getQuantite()) * nb;
                         wo.setMoney(wo.getMoney() + money);
                         wo.setScore(wo.getScore() + money);
                         p.setTimeleft(rest);
                     }
-                }
-
             }
         }
         wo.setLastupdate(System.currentTimeMillis());
@@ -142,13 +138,8 @@ public class Services {
         System.out.println("Monnaie " + wo.getMoney());
         return wo;
 
-    }
-
-     
-    
-
-
-    // prend en paramètre le pseudo du joueur et le produit
+    }   
+        // prend en paramètre le pseudo du joueur et le produit
     // sur lequel une action a eu lieu (lancement manuel de production ou 
     // achat d’une certaine quantité de produit)
     // renvoie false si l’action n’a pas pu être traitée  
@@ -387,7 +378,7 @@ public class Services {
             world.setMoney(world.getMoney() - upgrade.getSeuil());
         }
         //sauvegarder le monde
-        saveWorldToXml(username, world);
+        this.saveWorldToXml(username, world);
         return true;
     }
 
