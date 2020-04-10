@@ -87,25 +87,34 @@ public class Services {
         }
     }
 
-    public World getWorld(String username) {
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public World getWorld(String username) throws JAXBException, FileNotFoundException {
         //recuperer le world
         World wo = this.readWorldFromXml(username);
+        if (wo.getLastupdate() == System.currentTimeMillis()) {
+            return wo;
+        }
         //calculer le temps ecoulé depuis la dernière mise a jour du monde
         long ecoule = System.currentTimeMillis() - wo.getLastupdate();
-        System.out.println("ecoule " + ecoule);
-        //pour tous les produits
+        //System.out.println("ecoule " + ecoule);
+        //pour tous les produits      
         ProductsType ps = wo.getProducts();
         for (ProductType p : ps.getProduct()) {
             //si pas de manager
+            //System.out.println("produit " + p.getName() + "difference " + (ecoule - p.getTimeleft()));
             if (!p.isManagerUnlocked()) {
                 //verifier que le joueur possède le produit
                 if (p.getTimeleft() > 0) {
                     if (p.getTimeleft() > ecoule) {
                         p.setTimeleft(p.getTimeleft() - ecoule);
+                        ecoule = 0;
                     } else {
                         System.out.println("ok");
-                        wo.setMoney(wo.getMoney() + p.getRevenu() * p.getQuantite());
+                        double money = wo.getMoney() + p.getRevenu() * p.getQuantite();
+                        wo.setMoney(money);
+                        wo.setScore(money);
                         p.setTimeleft(0);
+                        ecoule = ecoule - p.getTimeleft();
                     }
                 }
             } //si manager
@@ -115,8 +124,12 @@ public class Services {
                         p.setTimeleft(p.getTimeleft() - ecoule);
                     } else {
                         int nb = (int) ((ecoule - p.getTimeleft()) / p.getVitesse());
+                        //int nb = (int) (ecoule  / p.getVitesse());
                         int rest = (int) ((ecoule - p.getTimeleft()) % p.getVitesse());
-                        wo.setMoney(wo.getMoney() + p.getRevenu() * p.getQuantite() * nb);
+                        //int rest = (int) (ecoule  % p.getVitesse());
+                        double money = (wo.getMoney() + p.getRevenu() * p.getQuantite()) * nb;
+                        wo.setMoney(wo.getMoney() + money);
+                        wo.setScore(wo.getScore() + money);
                         p.setTimeleft(rest);
                     }
                 }
@@ -125,17 +138,21 @@ public class Services {
         }
         wo.setLastupdate(System.currentTimeMillis());
         //enregistre les modifications
-        saveWorldToXml(username, wo);
+        //saveWorldToXml(username, wo);
         System.out.println("Monnaie " + wo.getMoney());
-        return this.readWorldFromXml(username);
+        return wo;
 
     }
+
+     
+    
+
 
     // prend en paramètre le pseudo du joueur et le produit
     // sur lequel une action a eu lieu (lancement manuel de production ou 
     // achat d’une certaine quantité de produit)
     // renvoie false si l’action n’a pas pu être traitée  
-    public Boolean updateProduct(String username, ProductType newproduct) throws FileNotFoundException, FileNotFoundException {
+    public Boolean updateProduct(String username, ProductType newproduct) throws FileNotFoundException, FileNotFoundException, JAXBException {
         System.out.println("Strat update product " + newproduct.getName());
         // aller chercher le monde qui correspond au joueur
         World world = getWorld(username);
@@ -278,7 +295,7 @@ public class Services {
 
     // prend en paramètre le pseudo du joueur et le manager acheté.
     // renvoie false si l’action n’a pas pu être traitée
-    public Boolean updateManager(String username, PallierType newmanager) {
+    public Boolean updateManager(String username, PallierType newmanager) throws JAXBException, FileNotFoundException {
         // aller chercher le monde qui correspond au joueur
         System.out.println("Strat update manager" + newmanager.getName() + " avec username " + username);
         World world = getWorld(username);
@@ -320,7 +337,7 @@ public class Services {
         return Goodmanager;
     }
 
-    public Boolean updateUpgrade(String username, PallierType newupgrade) {
+    public Boolean updateUpgrade(String username, PallierType newupgrade) throws JAXBException, FileNotFoundException {
         // aller chercher le monde qui correspond au joueur
         World world = getWorld(username);
         // trouver dans ce monde, l'upgrade équivalent à celui passé

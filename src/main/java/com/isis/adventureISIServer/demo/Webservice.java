@@ -22,6 +22,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.xml.bind.JAXBException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -47,7 +48,7 @@ public class Webservice {
     @PUT
     @Path("product")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void PutProduct(@Context HttpServletRequest request, ProductType product) throws FileNotFoundException{
+    public void PutProduct(@Context HttpServletRequest request, ProductType product) throws FileNotFoundException, JAXBException{
         String username = request.getHeader("X-User");
         services.updateProduct(username, product);
         System.out.println("Put sur le produit: " +product.getName());      
@@ -57,7 +58,7 @@ public class Webservice {
     @PUT
     @Path("manager")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void PutManager(@Context HttpServletRequest request, PallierType manager){
+    public void PutManager(@Context HttpServletRequest request, PallierType manager) throws JAXBException, FileNotFoundException{
         String username = request.getHeader("X-User");
         services.updateManager(username, manager);
         System.out.println("Put sur le manager:"+manager.getName());      
@@ -66,7 +67,7 @@ public class Webservice {
     @PUT
     @Path("upgrade")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void PutUpgrade(@Context HttpServletRequest request, PallierType upgrade){
+    public void PutUpgrade(@Context HttpServletRequest request, PallierType upgrade) throws JAXBException, FileNotFoundException{
         String username = request.getHeader("X-User");
         services.updateUpgrade(username, upgrade);
         System.out.println("Put sur le upgrade: "+upgrade.getName());      
